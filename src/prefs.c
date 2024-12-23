@@ -136,7 +136,7 @@ void a_Prefs_init(void)
    prefs.penalty_em_dash_right = 100;
    prefs.penalty_em_dash_right_2 = 800;
    prefs.stretchability_factor = 100;
-   prefs.external_open_program = "/usr/bin/wget";
+   prefs.external_open_program = "/usr/bin/emacs -Q";
    prefs.external_history_program = "/usr/bin/wget";
 }
 
