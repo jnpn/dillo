@@ -63,6 +63,7 @@ using namespace dw::core;
 // FLTK related
 using namespace dw::fltk;
 
+#include <string>
 
 /*
  * Local data
@@ -809,6 +810,7 @@ void a_UIcmd_external_open_urlstr(void *vbw, char* external_open_program)
    BrowserWindow *bw = (BrowserWindow*)vbw;
    const DilloUrl *url = a_History_get_url(NAV_TOP_UIDX(bw));
    const char* curl = a_Url_str(url);
+   std::string cmd;
    // if ((search_urlstr = UIcmd_find_search_str(urlstr))) {
    //    urlstr = search_urlstr;
    // }
@@ -838,6 +840,10 @@ void a_UIcmd_external_open_urlstr(void *vbw, char* external_open_program)
    // }
    // dFree(search_urlstr);
    printf("\n\n[external_open] %s >> %s\n\n", curl, external_open_program);
+   cmd.append(external_open_program);
+   cmd.append(" ");
+   cmd.append(curl);
+   system(cmd.c_str());
 }
 
 /*
