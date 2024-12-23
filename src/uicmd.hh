@@ -77,6 +77,7 @@ void a_UIcmd_close_all_bw(void *p);
 
 void a_UIcmd_init(void);
 
+void a_UIcmd_external_open(void *vbw);
 
 // UI binding functions -------------------------------------------------------
 

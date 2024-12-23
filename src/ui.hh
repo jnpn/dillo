@@ -24,7 +24,8 @@ typedef enum {
    UI_BOOK,
    UI_TOOLS,
    UI_CLEAR,
-   UI_SEARCH
+   UI_SEARCH,
+   UI_EXTERNAL_OPEN,
 } UIButton;
 
 typedef enum {
@@ -125,6 +126,7 @@ class UI : public CustGroupVertical {
 
    CustGroupVertical *TopGroup;
    CustButton *Back, *Forw, *Home, *Reload, *Save, *Stop, *Bookmarks,
+              *External,
               *Tools, *Clear, *Search, *Help, *BugMeter, *FileButton;
    CustGroupHorizontal *LocBar, *NavBar, *StatusBar;
    Fl_Input *Location;

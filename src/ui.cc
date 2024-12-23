@@ -330,6 +330,11 @@ static void b1_cb(Fl_Widget *wid, void *cb_data)
          a_UIcmd_home(a_UIcmd_get_bw_by_widget(wid));
       }
       break;
+   case UI_EXTERNAL_OPEN:
+      if (b == FL_LEFT_MOUSE) {
+         a_UIcmd_external_open(a_UIcmd_get_bw_by_widget(wid));
+      }
+      break;
    case UI_RELOAD:
       if (b == FL_LEFT_MOUSE) {
          a_UIcmd_reload(a_UIcmd_get_bw_by_widget(wid));
@@ -433,6 +438,7 @@ void UI::make_toolbar(int tw, int th)
    Stop = make_button("Stop", icons->ImgStop, icons->ImgStopIn, UI_STOP);
    Bookmarks = make_button("Book", icons->ImgBook, NULL, UI_BOOK);
    Tools = make_button("Tools", icons->ImgTools, NULL, UI_TOOLS);
+   External = make_button("External", icons->ImgRight, NULL, UI_EXTERNAL_OPEN);
 
    Back->set_tooltip("Previous page");
    Forw->set_tooltip("Next page");
