@@ -40,6 +40,7 @@ struct iconset {
    Fl_Image *ImgMeterOK, *ImgMeterBug,
             *ImgHome, *ImgReload, *ImgSave, *ImgBook, *ImgTools,
             *ImgClear,*ImgSearch, *ImgHelp, *ImgLeft, *ImgLeftIn,
+            *ImgRightSimple, *ImgRightSimpleDbl,
             *ImgRight, *ImgRightIn, *ImgStop, *ImgStopIn;
 };
 
@@ -56,6 +57,8 @@ static struct iconset standard_icons = {
    new Fl_Pixmap(help_xpm),
    new Fl_Pixmap(left_xpm),
    NULL,
+   new Fl_Pixmap(rightsimple_xpm),
+   new Fl_Pixmap(rightsimpledbl_xpm),
    new Fl_Pixmap(right_xpm),
    NULL,
    new Fl_Pixmap(stop_xpm),
@@ -75,6 +78,8 @@ static struct iconset small_icons = {
    standard_icons.ImgHelp,
    new Fl_Pixmap(left_s_xpm),
    NULL,
+   NULL, // TOFIX rightsimple
+   NULL, // TOFIX rightsimpledbl
    new Fl_Pixmap(right_s_xpm),
    NULL,
    new Fl_Pixmap(stop_s_xpm),
@@ -438,7 +443,7 @@ void UI::make_toolbar(int tw, int th)
    Stop = make_button("Stop", icons->ImgStop, icons->ImgStopIn, UI_STOP);
    Bookmarks = make_button("Book", icons->ImgBook, NULL, UI_BOOK);
    Tools = make_button("Tools", icons->ImgTools, NULL, UI_TOOLS);
-   External = make_button("Share", icons->ImgRight, NULL, UI_EXTERNAL_OPEN);
+   External = make_button("Share", icons->ImgRightSimpleDbl, NULL, UI_EXTERNAL_OPEN);
 
    Back->set_tooltip("Previous page");
    Forw->set_tooltip("Next page");
