@@ -153,7 +153,7 @@ commit.h: commit.tmp.h
 	if diff $@ $^ >/dev/null; then rm $^; else mv $^ $@; fi
 
 commit.tmp.h:
-	printf '#define GIT_COMMIT "%s"\n' `git --work-tree="$(top_srcdir)" describe --dirty` > $@
+	printf '#define GIT_COMMIT "%s--%s"\n' `git --work-tree="$(top_srcdir)" describe --dirty` `git branch --show-current` > $@
 else
 # No need to rebuild
 commit.h:
