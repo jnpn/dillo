@@ -796,6 +796,51 @@ void a_UIcmd_open_urlstr(void *vbw, const char *urlstr)
 }
 
 /*
+ * Open a new URL in the given browser window.
+ *
+ * our custom "file:" URIs are normalized here too.
+ */
+void a_UIcmd_external_open_urlstr(void *vbw, char* external_open_program)
+{
+   // char *new_urlstr;
+   // char *search_urlstr = NULL;
+   // DilloUrl *url;
+   // int ch;
+   BrowserWindow *bw = (BrowserWindow*)vbw;
+   const DilloUrl *url = a_History_get_url(NAV_TOP_UIDX(bw));
+   const char* curl = a_Url_str(url);
+   // if ((search_urlstr = UIcmd_find_search_str(urlstr))) {
+   //    urlstr = search_urlstr;
+   // }
+   // if (urlstr && *urlstr) {
+   //    /* Filter URL string */
+   //    new_urlstr = a_Url_string_strip_delimiters(urlstr);
+   // 
+   //    if (!dStrnAsciiCasecmp(new_urlstr, "file:", 5)) {
+   //       /* file URI */
+   //       ch = new_urlstr[5];
+   //       if (!ch || ch == '.') {
+   //          url = a_Url_new(Paths::getOldWorkingDir(), "file:");
+   //       } else {
+   //          url = a_Url_new(new_urlstr, "file:");
+   //       }
+   // 
+   //    } else {
+   //       /* common case */
+   //       url = a_Url_new(new_urlstr, NULL);
+   //    }
+   //    dFree(new_urlstr);
+   // 
+   //    if (url) {
+   //       a_UIcmd_open_url(bw, url);
+   //       a_Url_free(url);
+   //    }
+   // }
+   // dFree(search_urlstr);
+   printf("\n\n[external_open] %s >> %s\n\n", curl, external_open_program);
+}
+
+/*
  * Open a new URL in the given browser window
  */
 void a_UIcmd_open_url(BrowserWindow *bw, const DilloUrl *url)
@@ -897,6 +942,14 @@ void a_UIcmd_forw_popup(void *vbw, int x, int y)
 void a_UIcmd_home(void *vbw)
 {
    a_UIcmd_open_url((BrowserWindow*)vbw, prefs.home);
+}
+
+/*
+ * Send the URL to <prefs.external_open_program>
+ */
+void a_UIcmd_external_open(void *vbw)
+{
+  a_UIcmd_external_open_urlstr((BrowserWindow*)vbw, prefs.external_open_program);
 }
 
 /*
